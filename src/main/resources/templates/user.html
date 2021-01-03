@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <style>
+        table th, table td {
+            padding: 5px;
+        }
+
+        .row {
+            font-style: italic;
+        }
+
+        .even-row {
+            color: black;
+        }
+
+        .odd-row {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<h1>User</h1>
+<a href="/logout">logout</a>
+<table border="1">
+    <thead>
+    <tr>
+
+        <th> First Name </th>
+        <th> Last Name </th>
+        <th> Email </th>
+        <th> Login </th>
+        <th> Password</th>
+        <th> Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+
+        <td><span th:text="${user.firstName}"> First Name </span></td>
+        <td><span th:text="${user.lastName}"> Last Name </span></td>
+        <td><span th:text="${user.email}"> Email </span></td>
+        <td><span th:text="${user.login}"> login </span></td>
+        <td><span th:text="${user.pwd}"> Password </span></td>
+        <td><span th:text="${user.roles}"> Role </span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
