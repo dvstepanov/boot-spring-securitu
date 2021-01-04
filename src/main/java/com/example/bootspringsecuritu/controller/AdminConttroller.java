@@ -9,6 +9,7 @@ import com.example.bootspringsecuritu.model.User;
 import com.example.bootspringsecuritu.service.UserService;
 import com.example.bootspringsecuritu.service.RoleService;
 
+import java.security.Principal;
 import java.util.*;
 
 @Controller
@@ -23,14 +24,15 @@ public class AdminConttroller {
 
 
     @RequestMapping()
-    public String listUsers(ModelMap model) {
+    public String listUsers(ModelMap model, Principal principal) {
+        model.addAttribute( "user", userService.getUserByEmail(principal.getName()));
         model.addAttribute("users", userService.listUsers());
-        System.out.println(roleService.listRoles().toString());
         return "admin";
     }
 
     @GetMapping("/add")
-    public String getUserForm(Model model) {
+    public String getUserForm(Model model, Principal principal) {
+        model.addAttribute( "user", userService.getUserByEmail(principal.getName()));
         model.addAttribute("listRole", roleService.listRoles());
         model.addAttribute("users", new User());
         return "add";

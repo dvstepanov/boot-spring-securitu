@@ -25,10 +25,10 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String loginPage() {
-        return "login";
-    }
+//    @RequestMapping(value = "login", method = RequestMethod.GET)
+//    public String loginPage() {
+//        return "login";
+//    }
 
     @GetMapping("/user")
     public String clickMe(Model model, Principal principal) {
