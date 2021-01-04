@@ -53,15 +53,15 @@
                        name="login"
                        th:value="${usersedit.login}"/></td>
             <td><input type="text"
-                       name="pwd"
-                       th:value="${usersedit.pwd}"/></td>
+                       name="password"
+                       th:value="${usersedit.password}"/></td>
             <td>
                 <th:block th:each="roles : ${listRole}">
                     <br>
                     <input name="idRole"
                            th:checked="${#sets.contains(usersedit.roles, roles)}"
-                           th:value="${roles.getId()}" type="checkbox"/>
-                    <label th:text="${roles.getName()}"></label>
+                           th:value="${roles.id}" type="checkbox"/>
+                    <label th:text="${roles.name}"></label>
                 </th:block>
             </td>
         </tr>

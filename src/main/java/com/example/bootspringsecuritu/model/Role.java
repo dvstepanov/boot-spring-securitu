@@ -12,7 +12,7 @@ import java.util.Set;
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     @Transient
     @ManyToMany(mappedBy = "roles")
@@ -24,5 +24,21 @@ public class Role implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return getName();
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        return 37 * result + (this.name == null ? 0 : this.name.hashCode());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return this.name.equals(o.toString());
     }
 }
