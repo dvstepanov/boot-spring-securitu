@@ -20,10 +20,10 @@ public class User implements UserDetails {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "email")
+    @Column(name = "age")
+    private int age;
+    @Column(name = "email", unique = true)
     private String email;
-    @Column(name = "login", unique = true)
-    private String login;
     @Column(name = "password")
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
