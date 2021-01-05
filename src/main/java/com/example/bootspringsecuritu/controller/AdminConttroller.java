@@ -27,6 +27,8 @@ public class AdminConttroller {
     public String listUsers(ModelMap model, Principal principal) {
         model.addAttribute( "user", userService.getUserByEmail(principal.getName()));
         model.addAttribute("users", userService.listUsers());
+        model.addAttribute("listRole", roleService.listRoles());
+
         return "admin";
     }
 
@@ -44,16 +46,14 @@ public class AdminConttroller {
         return getStringRole(user, idRole);
     }
 
-    @RequestMapping(value = "/deletuser/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable int id) {
+    @PostMapping(value = "/deletuser/{id}")
+    public String delete(@PathVariable long id) {
         userService.deleteUser(id);
         return "redirect:/admin";
     }
 
     @GetMapping(value = "/edituser/{id}")
-    public String edit(@PathVariable int id, ModelMap model, ModelMap model1) {
-        model.addAttribute("usersedit", userService.getUser(id));
-        model1.addAttribute("listRole", roleService.listRoles());
+    public String edit(@PathVariable long id, ModelMap model) {
         return "edit";
     }
 
