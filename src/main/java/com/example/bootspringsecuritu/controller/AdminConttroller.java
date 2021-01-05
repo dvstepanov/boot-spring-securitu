@@ -1,7 +1,6 @@
 package com.example.bootspringsecuritu.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import com.example.bootspringsecuritu.model.Role;
@@ -28,16 +27,9 @@ public class AdminConttroller {
         model.addAttribute( "user", userService.getUserByEmail(principal.getName()));
         model.addAttribute("users", userService.listUsers());
         model.addAttribute("listRole", roleService.listRoles());
+        model.addAttribute("newUser", new User());
 
         return "admin";
-    }
-
-    @GetMapping("/add")
-    public String getUserForm(Model model, Principal principal) {
-        model.addAttribute( "user", userService.getUserByEmail(principal.getName()));
-        model.addAttribute("listRole", roleService.listRoles());
-        model.addAttribute("users", new User());
-        return "add";
     }
 
     @PostMapping("/add")
@@ -50,11 +42,6 @@ public class AdminConttroller {
     public String delete(@PathVariable long id) {
         userService.deleteUser(id);
         return "redirect:/admin";
-    }
-
-    @GetMapping(value = "/edituser/{id}")
-    public String edit(@PathVariable long id, ModelMap model) {
-        return "edit";
     }
 
     @PostMapping(value = "/edituser/{id}")

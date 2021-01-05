@@ -30,7 +30,7 @@ public class UserController {
 //        return "login";
 //    }
 
-    @GetMapping("/user")
+    @RequestMapping("/user")
     public String clickMe(Model model, Principal principal) {
         model.addAttribute("user", userService.getUserByEmail(principal.getName()));
         return "user";
